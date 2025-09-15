@@ -5,7 +5,7 @@
 3. default.sdf file (in this repo)
 4. px4_ros_com package: https://github.com/PX4/px4_ros_com/blob/main/src/examples/offboard_py/offboard_control.py
 5. ros_gz_bridge package: https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_bridge
-6. PX4-ROS2-Drone-Composable package: https://github.com/Fixit-Davide/PX4-ROS2-Drone-Composable/tree/master
+6. PX4-ROS2-Drone-Composable package: https://github.com/Fixit-Davide/PX4-ROS2-Drone-Composable/
 7. tf2_ros
 8. ultralytics_ros package: https://github.com/Alpaca-zip/ultralytics_ros
 9. The file todo_tf.py (in this repo)

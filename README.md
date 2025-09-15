@@ -7,7 +7,7 @@
 5. ros_gz_bridge package: https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_bridge
 6. PX4-ROS2-Drone-Composable package: https://github.com/Fixit-Davide/PX4-ROS2-Drone-Composable/tree/master
 7. tf2_ros
-8. ultralytics_ros package: https://github.com/diogoferreira08/ultralytics_ros/tree/humble-devel
+8. ultralytics_ros package: https://github.com/Alpaca-zip/ultralytics_ros
 9. The file todo_tf.py (in this repo)
 
 

@@ -8,7 +8,7 @@ from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSDurabilityPolicy, His
 from geometry_msgs.msg import Point, PoseStamped, TransformStamped
 from sensor_msgs.msg import Image, CameraInfo
 from vision_msgs.msg import Detection2DArray
-from detection_msgs.msg import PublishData
+# from detection_msgs.msg import PublishData
 from filterpy.kalman import KalmanFilter
 import tf2_ros
 import tf2_geometry_msgs
@@ -174,7 +174,7 @@ class FollowTarget(Node):
         self.detected_objects = []
         self.detected_objects_ids = []
         self.bool = True
-        self.publish_data = PublishData()
+        # self.publish_data = PublishData()
         
   
         # TF setup
@@ -230,7 +230,7 @@ class FollowTarget(Node):
             10)
  
         # Publishers
-        self.publisher = self.create_publisher(PublishData, '/rosbag_data', 10)
+        # self.publisher = self.create_publisher(PublishData, '/rosbag_data', 10)
         self.publish_pose = self.create_publisher(PoseStamped, '/target_pose', 10)
         self.publish_pose2 = self.create_publisher(PoseStamped, '/target_pose2', 10)
         self.trajectory_setpoint_pub = self.create_publisher(
@@ -420,7 +420,7 @@ class FollowTarget(Node):
 
         print("horizontal distance", self.dist_horizontal)
 
-        self.publish_data.control_output = float(control_output)
+        # self.publish_data.control_output = float(control_output)
 
         normalized_y = ((self.KF.x[1] / self.ppy) - 1)
         
@@ -646,8 +646,8 @@ class FollowTarget(Node):
 
                     if not(self.target_lost):
                         self.KF.update([center_x, center_y, size_x, size_y])
-                    self.publish_data.distance_cnst = float(self.KF.x[0])
-                    self.publish_data.distance_singer = float(self.KF.x[1])
+                    # self.publish_data.distance_cnst = float(self.KF.x[0])
+                    # self.publish_data.distance_singer = float(self.KF.x[1])
 
 
                     # Convert center coordinates to normalized coordinates (-1 to 1)
@@ -659,13 +659,13 @@ class FollowTarget(Node):
                     #Calculate target heading - put bbox in the center of the frame
                     self.target_hdg = - self.kh * (normalized_x)
                     
-                    self.publish_data.error_heading = - float(self.kh * (normalized_x))
-                    self.publish_data.id = int(self.target_id)
+                    # self.publish_data.error_heading = - float(self.kh * (normalized_x))
+                    # self.publish_data.id = int(self.target_id)
 
                     # Calculate the error between the target and the center of the image
                     self.target_altitude = self.altitude - self.kp_altitude * (normalized_y)# - (self.altitude - 6) * 0.1
 
-                    self.publish_data.error_altitude = - float(self.kp_altitude * (normalized_y))# - (self.altitude - 6) * 0.1
+                    # self.publish_data.error_altitude = - float(self.kp_altitude * (normalized_y))# - (self.altitude - 6) * 0.1
 
                     if self.target_altitude < 3:
                         self.target_altitude = 3
@@ -684,10 +684,10 @@ class FollowTarget(Node):
                     target_x, target_y = self.target_coordinates_test(value,center_x,center_y,self.heading)
                     self.KF_target.update([target_x, target_y])
 
-                    self.publish_data.target_x = target_x
-                    self.publish_data.target_y = target_y
-                    self.publish_data.estimated_target_x = float(self.KF_target.x[0])
-                    self.publish_data.estimated_target_y = float(self.KF_target.x[1])
+                    # self.publish_data.target_x = target_x
+                    # self.publish_data.target_y = target_y
+                    # self.publish_data.estimated_target_x = float(self.KF_target.x[0])
+                    # self.publish_data.estimated_target_y = float(self.KF_target.x[1])
 
 
                     #print("---- estimated target pose ----\n", self.KF_target.x[0], self.KF_target.x[1])
@@ -702,11 +702,11 @@ class FollowTarget(Node):
 
 
                     #self.publish_data.altitude = self.altitude
-                    self.publish_data.estimated_distance= float(estimated_distance)
-                    self.publish_data.use_depth = False
-                    self.publish_data.center_x = float(center_x)
-                    self.publish_data.center_y = float(center_y)
-                    self.publish_data.controller_error = float(error)
+                    # self.publish_data.estimated_distance= float(estimated_distance)
+                    # self.publish_data.use_depth = False
+                    # self.publish_data.center_x = float(center_x)
+                    # self.publish_data.center_y = float(center_y)
+                    # self.publish_data.controller_error = float(error)
 
                     if (self.adjustment_period > 0):
                         if not(self.target_lost):
@@ -721,7 +721,7 @@ class FollowTarget(Node):
                         print("---- LOST ----", self.target_id , self.lost_counter.counter)
                         
                         control_output = self.RateLimiter(0)
-                        self.publish_data.control_output = control_output	
+                        # self.publish_data.control_output = control_output	
                         Vx = math.cos(self.heading) * control_output
                         Vy = math.sin(self.heading) * control_output
                         # self.velocity_msg = self.create_velocity_msg(Vx, Vy, 0, 0, self.lost_altitude, True)

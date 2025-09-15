@@ -614,7 +614,7 @@ class FollowTarget(Node):
                     target_found=False
                 elif target_found==1:
                     target_found=True
-                self.publish_data.target_lost = target_found
+                #self.publish_data.target_lost = target_found
                         
                 #Update the position of all objects and get target bbox information
                 #If target was not found in detection, do Id Switch Recovery
@@ -634,8 +634,7 @@ class FollowTarget(Node):
                         # Point case
                         center_x = bounding_box.center.x
                         center_y = bounding_box.center.y
-                        # print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-                    
+                        
                     # center_x = bounding_box.center.x
                     # center_y = bounding_box.center.y
                     size_x = bounding_box.size_x

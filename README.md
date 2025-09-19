@@ -3,10 +3,14 @@
 1. Micro-XRCE-DDS-Agent
 2. PX4-Autopilot
 3. default.sdf file (in this repo)
-4. px4_ros_com package: https://github.com/PX4/px4_ros_com/blob/main/src/examples/offboard_py/offboard_control.py
+
+Following replaced with QGC offboard/takeoff:
+
+<strike> 4. px4_ros_com package: https://github.com/PX4/px4_ros_com/blob/main/src/examples/offboard_py/offboard_control.py </strike>
+
 5. ros_gz_bridge package: https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_bridge
-8. ultralytics_ros package: https://github.com/Alpaca-zip/ultralytics_ros
-9. The file refactored_main.py (in this repo)
+6. ultralytics_ros package: https://github.com/Alpaca-zip/ultralytics_ros
+7. The file refactored_main.py (in this repo)
 
 
 ## Purpose of Each Pkg:
